@@ -1,0 +1,14 @@
+services:
+  jenkins:
+    build: .
+    container_name: jenkins-casc
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./casc_configs/jenkins.yaml:/var/jenkins_home/jenkins.yaml:ro
+    environment:
+      CASC_JENKINS_CONFIG: /var/jenkins_home/jenkins.yaml
+
+volumes:
+  jenkins_home:
